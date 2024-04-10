@@ -5,7 +5,14 @@ def encode(password):
         encoded += str((int(char)+3)%10)
     return encoded
 
-
+def decode(string):
+    decoded = ""
+    for char in string:
+        integer = int(char) - 3
+        if integer < 0:
+            integer += 10
+        decoded += str(integer)
+    return decoded
 
 def main():
     while True:
@@ -17,7 +24,9 @@ def main():
             encode_password =encode(password)
             print("Your password has been stored ")
 
-
+        elif choice == '2':
+            decoded_password = decode(encode_password)
+            print(f"The encoded password is {encode_password}, and the original password is {decoded_password}.")
 
         elif choice == '3':
             print("Exiting program.")
